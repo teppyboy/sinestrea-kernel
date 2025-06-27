@@ -3,6 +3,7 @@
 import subprocess
 import shutil
 import sys
+import os
 
 def main():
     if len(sys.argv) != 3 and len(sys.argv) != 4:
@@ -11,6 +12,7 @@ def main():
     BASE_BOOT_IMG = sys.argv[1]
     KERNEL_IMAGE = sys.argv[2]
     OUTPUT = sys.argv[3] if len(sys.argv) > 3 else "boot.img"
+    os.chdir("./sinestrea")
     print("Unpacking boot image...")
     boot_img_raw_info = subprocess.check_output(f"./mkbootimg/unpack_bootimg.py --boot_img {BASE_BOOT_IMG} --out tmp_boot", shell=True).decode()
     mkbootimg_args = [
