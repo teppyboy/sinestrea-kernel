@@ -9,5 +9,5 @@ if [ ! -f tmp/lineage_diting_base_boot.img ]; then
 else
     echo "Base boot image already exists."
 fi
-../create_bootimg.py tmp/lineage_diting_base_boot.img ./sinestrea/Image dist/lineage_diting/boot.img
+./create_bootimg.py tmp/lineage_diting_base_boot.img ./sinestrea/Image dist/lineage_diting/boot.img
 rm Image
