@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd mkbootimg
+cd sinestrea/mkbootimg
 git pull
