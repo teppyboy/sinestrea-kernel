@@ -12,9 +12,9 @@ def main():
     KERNEL_IMAGE = sys.argv[2]
     OUTPUT = sys.argv[3] if len(sys.argv) > 3 else "boot.img"
     print("Unpacking boot image...")
-    boot_img_raw_info = subprocess.check_output(f"./mkbootimg/unpack_bootimg.py --boot_img {BASE_BOOT_IMG} --out tmp_boot", shell=True).decode()
+    boot_img_raw_info = subprocess.check_output(f"./sinestrea/mkbootimg/unpack_bootimg.py --boot_img {BASE_BOOT_IMG} --out tmp_boot", shell=True).decode()
     mkbootimg_args = [
-        "./mkbootimg/mkbootimg.py",
+        "./sinestrea/mkbootimg/mkbootimg.py",
         "--kernel", KERNEL_IMAGE,
         "--ramdisk", "tmp_boot/ramdisk",
     ]
