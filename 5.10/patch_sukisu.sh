@@ -26,7 +26,7 @@ echo "CONFIG_KSU=y" >> "$CONFIG_FILE"
 echo "CONFIG_KPROBES=y" >> "$CONFIG_FILE"
 echo "CONFIG_KPM=y" >> "$CONFIG_FILE"
 echo "CONFIG_KSU_SUSFS_SUS_SU=n" >> "$CONFIG_FILE"
-# echo "CONFIG_KSU_MANUAL_HOOK=y" >> "$CONFIG_FILE"
+echo "CONFIG_KSU_MANUAL_HOOK=y" >> "$CONFIG_FILE"
 
 # Add SUSFS configuration settings
 echo "CONFIG_KSU_SUSFS=y" >> "$CONFIG_FILE"

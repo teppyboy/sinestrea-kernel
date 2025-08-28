@@ -10,3 +10,5 @@ git clone https://github.com/SukiSU-Ultra/SukiSU_patch --depth 1
 
 echo "Cloning SusFS4KSU repository..."
 git clone https://github.com/ShirkNeko/susfs4ksu/ --depth 1 -b gki-android12-5.10
+
+echo "Build environment initialized successfully."

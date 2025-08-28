@@ -9,11 +9,13 @@ source build.config.msm.waipio
 export ARCH="arm64"
 export CC="ccache clang"
 export LTO="thin"
+export LLVM=1
+export LLVM_IAS=1
 export PATH="$(realpath ../build/build-tools/path/linux-x86):$(realpath ../$CLANG_PREBUILT_BIN):$(realpath ../build/build-tools/path/linux-x86):$(realpath ./out/android12-5.10/common/host_tools):$PATH"
-make O=out LLVM=1 LLVM_IAS=1 mrproper
-make O=out LLVM=1 LLVM_IAS=1 gki_defconfig
-make O=out LLVM=1 LLVM_IAS=1 vendor/waipio_GKI.config 
-make O=out LLVM=1 LLVM_IAS=1 vendor/xiaomi_GKI.config
-make O=out LLVM=1 LLVM_IAS=1 vendor/diting_GKI.config
-make O=out LLVM=1 LLVM_IAS=1 vendor/debugfs.config
-make -j$(nproc --all) O=out LLVM=1 LLVM_IAS=1
+make O=out mrproper
+make O=out gki_defconfig
+make O=out vendor/waipio_GKI.config 
+make O=out vendor/xiaomi_GKI.config
+make O=out vendor/diting_GKI.config
+make O=out vendor/debugfs.config
+make -j$(nproc --all) O=out 
