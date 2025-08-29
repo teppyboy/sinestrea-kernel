@@ -2,9 +2,11 @@
 
 echo "Patching kernel..."
 cd sinestrea
-cp common/out/arch/arm64/boot/Image .
+cp ../dist/lineage-diting/Image .
 chmod +x ./SukiSU_patch/kpm/patch_linux
 ./SukiSU_patch/kpm/patch_linux
 rm Image
 mv oImage Image
+rm ../dist/lineage-diting/Image
+mv Image ../dist/lineage-diting/Image
 echo "Kernel patched successfully."

@@ -19,3 +19,7 @@ make O=out vendor/xiaomi_GKI.config
 make O=out vendor/diting_GKI.config
 make O=out vendor/debugfs.config
 make -j$(nproc --all) O=out 
+# Copying
+mkdir -p dist/lineage-diting
+cd ../..
+cp sinestrea/common/out/arch/arm64/boot/Image dist/lineage-diting/Image
