@@ -7,30 +7,38 @@
 + SukiSU-Ultra bleeding edge version.
 + Integration with SusFS 
 + ZRAM & other patches (like https://github.com/ShirkNeko/GKI_KernelSU_SUSFS)
-+ Optimized for specific devices.
++ Optimization for specific devices.
 + ... and more in the future :wink:
 
 ## Building
 
-Set up dependencies, on Ubuntu you would use the helper script to install them faster:
+0. Set up dependencies, on Ubuntu you would use the helper script to install them faster:
 
 ```bash
 ./scripts/ubuntu/install_deps.sh
 ```
 
-To build 5.10 kernel for `LineageOS/diting`:
+1. To build 5.10 kernel for `LineageOS/diting`:
 
 ```bash
 ./general/init.sh
 ./common/5.10/init.sh
 ./lineage-diting/init.sh
-./common/5.10/patch_sukisu.sh
+./common/patch_sukisu.sh
+./common/5.10/patch_susfs.sh
 ./lineage-diting/build.sh
 ./lineage-diting/patch_kpm.sh
-# For now, manually copy Image to AK3 zip here 
+# For now, manually copy Image from ./dist/lineage-diting/Image to AK3 zip 
 ./lineage-diting/create_bootimg.sh
 # boot.img should be in ./dist/lineage-diting/boot.img
 ```
+
+### Cleaning
+
+In case you want to clean your tree (because of a failed patch or whatever), you have two options:
+
+1. Execute `./general/cleanup.sh` to clean up the kernel sources directory.
+2. Remove `sinestrea` directory to start from scratch.
 
 ## FAQ
 
