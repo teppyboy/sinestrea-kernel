@@ -10,6 +10,28 @@
 + Optimized for specific devices.
 + ... and more in the future :wink:
 
+## Building
+
+Set up dependencies, on Ubuntu you would use the helper script to install them faster:
+
+```bash
+./scripts/ubuntu/install_deps.sh
+```
+
+To build 5.10 kernel for `LineageOS/diting`:
+
+```bash
+./general/init.sh
+./common/5.10/init.sh
+./lineage-diting/init.sh
+./common/5.10/patch_sukisu.sh
+./lineage-diting/build.sh
+./lineage-diting/patch_kpm.sh
+# For now, manually copy Image to AK3 zip here 
+./lineage-diting/create_bootimg.sh
+# boot.img should be in ./dist/lineage-diting/boot.img
+```
+
 ## FAQ
 
 #### Where is the kernel source?

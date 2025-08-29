@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p dist/lineage_diting
+mkdir -p dist/lineage-diting
 mkdir -p tmp
 # Check if tmp/lineage_diting_base_boot.img exists
 if [ ! -f tmp/lineage_diting_base_boot.img ]; then
@@ -9,5 +9,5 @@ if [ ! -f tmp/lineage_diting_base_boot.img ]; then
 else
     echo "Base boot image already exists."
 fi
-./create_bootimg.py tmp/lineage_diting_base_boot.img ./sinestrea/Image dist/lineage_diting/boot.img
+python3 ./scripts/create_bootimg.py tmp/lineage_diting_base_boot.img ./sinestrea/Image dist/lineage-diting/boot.img
 rm ./sinestrea/Image
