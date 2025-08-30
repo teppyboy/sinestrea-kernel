@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
 # Optimized environment variables
-AFLAGS="-mtune=cortex-x2 -march=armv9-a+sve2"
-CFLAGS="-O3 -msve-vector-bits=scalable $AFLAGS"
-COMPAT_FLAGS="-Wno-default-const-init-unsafe"
+AFLAGS="-mtune=cortex-x1 -march=armv8.5-a"
+CFLAGS="$AFLAGS"
+COMPAT_FLAGS=""
+if [[ $CLANG_PREBUILT_BIN != *"r416183b"* ]]; then
+    echo "Setting recent optimized flags because we're using updated toolchain..."
+    AFLAGS="-mtune=cortex-x2 -march=armv9-a"
+    CFLAGS="$AFLAGS"
+fi
+if [[ $CLANG_PREBUILT_BIN == *"r563880"* ]]; then
+    echo "Adding compat flags for clang-r563880 (LLVM 21)..."
+    COMPAT_FLAGS="-Wno-default-const-init-unsafe"
+fi
 
 source scripts/env.sh
 cd sinestrea/common
@@ -24,4 +33,5 @@ make -j$(nproc --all) O=out
 # Copying
 cd ../..
 mkdir -p dist/lineage-diting
+rm -rf dist/lineage-diting/Image
 cp sinestrea/common/out/arch/arm64/boot/Image dist/lineage-diting/Image
