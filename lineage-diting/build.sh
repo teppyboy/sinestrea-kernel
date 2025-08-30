@@ -5,6 +5,7 @@ AFLAGS="-mtune=cortex-x2 -march=armv9-a+sve2"
 CFLAGS="-O3 -msve-vector-bits=scalable $AFLAGS"
 COMPAT_FLAGS="-Wno-default-const-init-unsafe"
 
+source scripts/env.sh
 cd sinestrea/common
 source build.config.common
 source build.config.aarch64
