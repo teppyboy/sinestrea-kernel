@@ -4,6 +4,15 @@
 AFLAGS="-mtune=cortex-x1 -march=armv8.5-a"
 CFLAGS="$AFLAGS"
 COMPAT_FLAGS=""
+
+source scripts/env.sh
+cd sinestrea/common
+source build.config.common
+source build.config.aarch64
+source build.config.gki
+source build.config.gki.aarch64
+source build.config.msm.waipio
+
 if [[ $CLANG_PREBUILT_BIN != *"r416183b"* ]]; then
     echo "Setting recent optimized flags because we're using updated toolchain..."
     AFLAGS="-mtune=cortex-x2 -march=armv9-a"
@@ -14,13 +23,6 @@ if [[ $CLANG_PREBUILT_BIN == *"r563880"* ]]; then
     COMPAT_FLAGS="-Wno-default-const-init-unsafe"
 fi
 
-source scripts/env.sh
-cd sinestrea/common
-source build.config.common
-source build.config.aarch64
-source build.config.gki
-source build.config.gki.aarch64
-source build.config.msm.waipio
 export ARCH="arm64" CC="ccache clang" LTO="thin" LLVM=1 LLVM_IAS=1 
 export KCFLAGS="$CFLAGS $COMPAT_FLAGS" KAFLAGS="$AFLAGS"
 export PATH="$(realpath ../build/build-tools/path/linux-x86):$(realpath ../$CLANG_PREBUILT_BIN):$(realpath ../build/build-tools/path/linux-x86):$(realpath ./out/android12-5.10/common/host_tools):$PATH"
