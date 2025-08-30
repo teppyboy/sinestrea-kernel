@@ -2,6 +2,7 @@
 
 ### THIS SCRIPT IS CALLED AUTOMATICALLY, DO NOT RUN THIS SCRIPT UNLESS INSTRUCTED TO DO SO ###
 
+cd sinestrea/common
 echo "Copying susfs4ksu files..."
 cp ../susfs4ksu/kernel_patches/fs/* ./fs/
 cp ../susfs4ksu/kernel_patches/include/linux/* ./include/linux/
