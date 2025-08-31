@@ -19,8 +19,9 @@ if [[ $CLANG_PREBUILT_BIN != *"r416183b"* ]]; then
     AFLAGS="$CFLAGS -march=armv9-a"
 fi
 if [[ $CLANG_PREBUILT_BIN == *"r563880"* ]]; then
-    echo "Adding compat flags for clang-r563880 (LLVM 21)..."
-    COMPAT_FLAGS="-Wno-default-const-init-unsafe"
+    echo "stub"
+#     echo "Adding compat flags for clang-r563880 (LLVM 21)..."
+#     COMPAT_FLAGS="-Wno-default-const-init-unsafe"
 fi
 
 export ARCH="arm64" CC="ccache clang" LTO="thin" LLVM=1 LLVM_IAS=1 
@@ -31,6 +32,7 @@ make O=out gki_defconfig
 make O=out vendor/waipio_GKI.config 
 make O=out vendor/xiaomi_GKI.config
 make O=out vendor/diting_GKI.config
+make O=out vendor/debugfs.config
 make -j$(nproc --all) O=out 
 # Copying
 cd ../..
