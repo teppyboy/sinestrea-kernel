@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Optimized environment variables
-AFLAGS="-mtune=cortex-x1 -march=armv8.5-a"
-CFLAGS="$AFLAGS"
+CFLAGS="-mtune=cortex-x1"
+AFLAGS="$CFLAGS -march=armv8.5-a"
 COMPAT_FLAGS=""
 
 source scripts/env.sh
@@ -15,8 +15,8 @@ source build.config.msm.waipio
 
 if [[ $CLANG_PREBUILT_BIN != *"r416183b"* ]]; then
     echo "Setting recent optimized flags because we're using updated toolchain..."
-    AFLAGS="-mtune=cortex-x2 -march=armv9-a"
-    CFLAGS="$AFLAGS"
+    CFLAGS="-mtune=cortex-x2"
+    AFLAGS="$CFLAGS -march=armv9-a"
 fi
 if [[ $CLANG_PREBUILT_BIN == *"r563880"* ]]; then
     echo "Adding compat flags for clang-r563880 (LLVM 21)..."
