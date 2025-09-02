@@ -16,21 +16,32 @@
 
 ```bash
 ./scripts/ubuntu/install_deps.sh
+./general/init.sh
 ```
 
-1. To build 5.10 kernel for `LineageOS/diting`:
+1. Build the kernel
+
++ To build 5.10 kernel for `LineageOS/diting`:
 
 ```bash
-./general/init.sh
 ./common/5.10/init.sh
-./lineage-diting/init.sh
+./device/lineage-diting/init.sh
 ./common/patch_sukisu.sh
 ./common/5.10/patch_susfs.sh
-./lineage-diting/build.sh
-./lineage-diting/patch_kpm.sh
+./device/lineage-diting/build.sh
+./device/lineage-diting/patch_kpm.sh
 # For now, manually copy Image from ./dist/lineage-diting/Image to AK3 zip 
-./lineage-diting/create_bootimg.sh
+./device/lineage-diting/create_bootimg.sh
 # boot.img should be in ./dist/lineage-diting/boot.img
+```
+
++ To build mainline kernel for `raviole` (WIP):
+
+```bash
+./device/raviole/mainline/init.sh
+./device/raviole/mainline/build.sh
+# For now, manually copy Image from ./dist/lineage-diting/Image to AK3 zip 
+./device/raviole/mainline/create_bootimg.sh
 ```
 
 ### Cleaning

@@ -21,14 +21,20 @@ def main():
     for line in boot_img_raw_info.splitlines():
         if line.startswith("os version:"):
             os_version = line.split(":")[1].strip()
+            if os_version == "None":
+                continue
             print(f"OS Version: {os_version}")
             mkbootimg_args.extend(["--os_version", os_version])
         elif line.startswith("os patch level:"):
             os_patch_level = line.split(":")[1].strip()
+            if os_patch_level == "None":
+                continue
             print(f"OS Patch Level: {os_patch_level}")
             mkbootimg_args.extend(["--os_patch_level", os_patch_level])
         elif line.startswith("boot image header version:"):
             boot_image_header_version = line.split(":")[1].strip()
+            if boot_image_header_version == "None":
+                continue
             print(f"Boot Image Header Version: {boot_image_header_version}")
             mkbootimg_args.extend(["--header_version", boot_image_header_version])
         elif line.startswith("command line args:"):
