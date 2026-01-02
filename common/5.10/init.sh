@@ -2,6 +2,8 @@
 
 cd sinestrea
 echo "Initializing build environment for GKI 5.10 kernel..."
+# Remove "common" because the user may have replaced it with their custom kernel.
+rm -rf common
 repo init -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10 --depth 1
 repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags
 

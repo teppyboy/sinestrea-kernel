@@ -2,7 +2,7 @@
 
 cd sinestrea/common
 echo "Setting up SukiSU (with susfs)..."
-curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-test
+curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s main
 
 echo "Applying other patches by SukiSU..."
 patch -p1 -F 3 < ../SukiSU_patch/hooks/syscall_hooks.patch
