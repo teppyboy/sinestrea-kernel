@@ -3,6 +3,11 @@
 # Optimized environment variables
 CFLAGS="-mtune=cortex-x1"
 AFLAGS="$CFLAGS -march=armv8.5-a"
+
+# Mold as linker to speed up building
+# export LDFLAGS_MODULE="-fuse-ld=mold"
+# export HOSTLDFLAGS="$LDFLAGS_MODULE"
+# export USERLDFLAGS="$LDFLAGS_MODULE"
 COMPAT_FLAGS=""
 
 source scripts/env.sh
@@ -24,6 +29,8 @@ if [[ $CLANG_PREBUILT_BIN == *"r563880"* ]]; then
 #     COMPAT_FLAGS="-Wno-default-const-init-unsafe"
 fi
 
+export USE_CCACHE=1
+export CCACHE_EXEC=$(which ccache)
 export ARCH="arm64" CC="ccache clang" LTO="thin" LLVM=1 LLVM_IAS=1 
 export KCFLAGS="$CFLAGS $COMPAT_FLAGS" KAFLAGS="$AFLAGS"
 export PATH="$(realpath ../build/build-tools/path/linux-x86):$(realpath ../$CLANG_PREBUILT_BIN):$(realpath ./out/android12-5.10/common/host_tools):$PATH"
@@ -36,6 +43,6 @@ make O=out vendor/debugfs.config
 make -j$(nproc --all) O=out 
 # Copying
 cd ../..
-mkdir -p dist/lineage-diting
-rm -rf dist/lineage-diting/Image
-cp sinestrea/common/out/arch/arm64/boot/Image dist/lineage-diting/Image
+mkdir -p dist/diting
+rm -rf dist/diting/Image
+cp sinestrea/common/out/arch/arm64/boot/Image dist/diting/Image

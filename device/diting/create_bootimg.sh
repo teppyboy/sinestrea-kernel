@@ -10,4 +10,4 @@ else
     echo "Base boot image already exists."
 fi
 rm -rf dist/lineage-diting/boot.img
-python3 ./scripts/create_bootimg.py tmp/lineage_diting_base_boot.img ./dist/lineage-diting/Image dist/lineage-diting/boot.img
+python3 ./scripts/create_bootimg.py tmp/lineage_diting_base_boot.img ./dist/diting/Image dist/diting/boot.img

@@ -39,9 +39,10 @@ def main():
             mkbootimg_args.extend(["--header_version", boot_image_header_version])
         elif line.startswith("command line args:"):
             command_line_args = line.split(":")[1].strip()
+#            command_line_args += "ignore_loglevel loglevel=7 earlycon earlyprintk console=tty0 console=ttyS0,115200 fbcon=map:0 fbcon=nodefer panic=5 oops=panic androidboot.bootanim=0 initcall_debug"
             if command_line_args != "":
                 print(f"Command Line Args: {command_line_args}")
-                mkbootimg_args.extend(["--cmdline", command_line_args])
+                mkbootimg_args.extend(["--cmdline", f"{command_line_args}"])
     mkbootimg_args.extend(["--out", OUTPUT])
     print("Creating new boot.img with the provided kernel image...")
     print("Args:", " ".join(mkbootimg_args))

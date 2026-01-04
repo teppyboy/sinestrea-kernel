@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 cd sinestrea/common
-echo "Setting up SukiSU (with susfs)..."
-curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s main
+echo "Setting up KernelSU-Next..."
+curl -LSs "https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh" | bash -s dev-susfs
 
 # echo "Setting up Baseband-guard..."
 # wget -O- https://github.com/vc-teahouse/Baseband-guard/raw/main/setup.sh | bash
@@ -21,9 +21,9 @@ CONFIG_FILE="./arch/arm64/configs/gki_defconfig"
 
 # Enable SukiSU config
 echo "CONFIG_KSU=y" >> "$CONFIG_FILE"
-echo "CONFIG_KPM=y" >> "$CONFIG_FILE"
+# echo "CONFIG_KSU_KPROBES_HOOK=n" >> "$CONFIG_FILE"
 
 # Enable baseband-guard
 # echo "CONFIG_BBG=y" >> "$CONFIG_FILE"
 
-echo "SukiSU applied successfully."
+echo "KernelSU-Next applied successfully."

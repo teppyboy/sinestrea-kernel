@@ -6,9 +6,9 @@ echo "Applying ZRAM patches..."
 cp -r ../SukiSU_patch/other/zram/lz4k/include/linux/* ./include/linux/
 cp -r ../SukiSU_patch/other/zram/lz4k/lib/* ./lib/
 cp -r ../SukiSU_patch/other/zram/lz4k/crypto/* ./crypto/
-cp -r ../SukiSU_patch/other/zram/lz4k_oplus ./lib/
+# cp -r ../SukiSU_patch/other/zram/lz4k_oplus ./lib/
 patch -p1 -F 3 < ../SukiSU_patch/other/zram/zram_patch/5.10/lz4kd.patch
-patch -p1 -F 3 < ../SukiSU_patch/other/zram/zram_patch/5.10/lz4k_oplus.patch
+# patch -p1 -F 3 < ../SukiSU_patch/other/zram/zram_patch/5.10/lz4k_oplus.patch
 
 # Enable ZRAM config
 echo "Adding configuration settings..."

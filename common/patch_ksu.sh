@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 cd sinestrea/common
-echo "Setting up SukiSU (with susfs)..."
-curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s main
+echo "Setting up KernelSU..."
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
 
 # echo "Setting up Baseband-guard..."
 # wget -O- https://github.com/vc-teahouse/Baseband-guard/raw/main/setup.sh | bash
 
-echo "Applying other patches by SukiSU..."
+echo "Applying other patches by SukiSU (yes)..."
 patch -p1 -F 3 < ../SukiSU_patch/69_hide_stuff.patch
 
-echo "Removing -dirty from kernel config..."
+echo "Remove -dirty from kernel config..."
 sed -i 's/-dirty//' ./scripts/setlocalversion
 
 echo "Removing check_defconfig..."
@@ -19,11 +19,10 @@ sed -i 's/check_defconfig//' ./build.config.gki
 echo "Adding configuration settings..."
 CONFIG_FILE="./arch/arm64/configs/gki_defconfig"
 
-# Enable SukiSU config
+# Enable KernelSU config
 echo "CONFIG_KSU=y" >> "$CONFIG_FILE"
-echo "CONFIG_KPM=y" >> "$CONFIG_FILE"
 
 # Enable baseband-guard
 # echo "CONFIG_BBG=y" >> "$CONFIG_FILE"
 
-echo "SukiSU applied successfully."
+echo "KernelSU applied successfully."
